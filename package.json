@@ -1,0 +1,31 @@
+{
+  "name": "udemy-webpack-course",
+  "version": "1.0.0",
+  "description": "Udemy Webpack Advanced Course",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config=config/webpack.dev.js",
+    "build": "webpack --config=config/webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtedone/udemy-webpack-course.git"
+  },
+  "keywords": [],
+  "author": "Marco Tedone <marco@techwings.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mtedone/udemy-webpack-course/issues"
+  },
+  "homepage": "https://github.com/mtedone/udemy-webpack-course#readme",
+  "dependencies": {
+    "css-loader": "^4.2.1",
+    "extract-loader": "^5.1.0",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
