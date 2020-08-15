@@ -1,8 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    main: './src/main.js',
+    main: ['./src/main.js'],
   },
   mode: 'development',
   output: {
@@ -13,9 +15,23 @@ module.exports = {
   devServer: {
     contentBase: 'dist',
     overlay: true,
+    hot: true,
   },
+  devtool: 'source-map',
   module: {
     rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-runtime'],
+            cacheDirectory: true,
+          },
+        },
+      },
       {
         test: /\.css$/,
         use: [
@@ -30,15 +46,6 @@ module.exports = {
       {
         test: /\.html$/,
         use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].html',
-            },
-          },
-          {
-            loader: 'extract-loader',
-          },
           {
             loader: 'html-loader',
             options: {
@@ -68,4 +75,10 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HTMLWebpackPlugin({
+      template: './src/index.html',
+    }),
+  ],
 };
